@@ -287,7 +287,7 @@ class VaeInferHandler(BaseHandler):
 
             logger.info(
                 f"Synthesis of the table - {self.table_name} was completed. "
-                f"Synthetic data saved in {self.path_to_merged_infer}"
+                f"Synthetic data saved in {self.path_to_merged_infer}."
             )
         except Exception as e:
             logger.info(f"Generation of the table - {self.table_name} failed on running stage.")

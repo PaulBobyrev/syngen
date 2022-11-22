@@ -47,7 +47,7 @@ class InferConfig:
 
     def set_paths(self):
         """
-        Create paths which used in infer process
+        Create paths which used in infer process and assigns a modified name if needed
         """
         dynamic_name = self.table_name[:-3] if self.both_keys else self.table_name
         return {
