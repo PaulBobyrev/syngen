@@ -69,7 +69,16 @@ class RootHandler(BaseHandler):
             data = data.dropna()
 
         if options["row_subset"]:
-            data = data.sample(n=options["row_subset"])
+            data = data.sample(n=min(options["row_subset"], len(data)))
+            if len(data) < 100:
+                logger.error("Not enough data. The number of rows in the table after preprocessing should be more "
+                             "then 100. Try 1) disable drop_null argument, 2) provide a bigger table")
+                raise AttributeError("Not enough data")
+            if len(data) < 500:
+                logger.warning(
+                    "The amount of data seems not enough to supply high-quality results. To improve the quality "
+                    "of generated data please consider any of the steps: 1) provide a bigger table, 2) disable "
+                    "drop_null argument")
 
         if options["epochs"] < 1:
             raise AttributeError("Number of epochs should be > 0")
