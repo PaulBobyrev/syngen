@@ -22,10 +22,10 @@ class TrainConfig:
         return {
             "model_artifacts_path": "model_artifacts/",
             "tmp_store_path": f"model_artifacts/tmp_store/{self.table_name}",
-            "input_data_path": f"model_artifacts/tmp_store/{self.table_name}/input_data.csv",
+            "input_data_path": f"model_artifacts/tmp_store/{self.table_name}/input_data_{self.table_name}.csv",
             "state_path": f"model_artifacts/resources/{self.table_name}/vae/checkpoints",
-            "results_path": f"model_artifacts/tmp_store/{self.table_name}/metrics.csv",
-            "bad_columns_path": f"model_artifacts/tmp_store/{self.table_name}/bad_columns.csv",
+            "results_path": f"model_artifacts/tmp_store/{self.table_name}/metrics_{self.table_name}.csv",
+            "bad_columns_path": f"model_artifacts/tmp_store/{self.table_name}/bad_columns_{self.table_name}.csv",
             "dataset_pickle_path": f"model_artifacts/resources/{self.table_name}/vae/checkpoints/model_dataset.pkl",
             "fk_kde_path": f"model_artifacts/resources/{self.table_name}/vae/checkpoints/fk_kde.pkl",
         }
@@ -51,11 +51,11 @@ class InferConfig:
         """
         dynamic_name = self.table_name[:-3] if self.both_keys else self.table_name
         return {
-            "original_data_path": f"model_artifacts/tmp_store/{dynamic_name}/input_data.csv",
-            "synthetic_data_path": f"model_artifacts/tmp_store/{dynamic_name}/merged_infer.csv",
+            "original_data_path": f"model_artifacts/tmp_store/{dynamic_name}/input_data_{dynamic_name}.csv",
+            "synthetic_data_path": f"model_artifacts/tmp_store/{dynamic_name}/merged_infer_{dynamic_name}.csv",
             "draws_path": f"model_artifacts/tmp_store/{dynamic_name}/draws",
-            "input_data_path": f"model_artifacts/tmp_store/{dynamic_name}/input_data.csv",
-            "path_to_merged_infer": f"model_artifacts/tmp_store/{dynamic_name}/merged_infer.csv",
+            "input_data_path": f"model_artifacts/tmp_store/{dynamic_name}/input_data_{dynamic_name}.csv",
+            "path_to_merged_infer": f"model_artifacts/tmp_store/{dynamic_name}/merged_infer_{dynamic_name}.csv",
             "state_path": f"model_artifacts/resources/{dynamic_name}/vae/checkpoints",
             "tmp_store_path": f"model_artifacts/tmp_store/{dynamic_name}",
             "vae_resources_path": f"model_artifacts/resources/{dynamic_name}/vae/checkpoints/",
